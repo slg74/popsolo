@@ -10,5 +10,5 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   root "keys#index"
-  get "/keys/:key_name", to: "keys#show", as: :key, constraints: { key_name: /[A-G][#b]?/ }
+  get "/keys/:key_name", to: "keys#show", as: :key
 end
