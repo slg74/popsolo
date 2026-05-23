@@ -1,5 +1,4 @@
 <%
-  # Circle of fifths: 12 keys at 30° increments, C at the top (−90° offset)
   fifths = %w[C G D A E B F# C# G# D# A# F]
   cx = 220; cy = 220
   r_outer = 190; r_inner = 95; r_label = 150
@@ -24,8 +23,8 @@
 
 <div class="circle-wrap">
   <svg viewBox="0 0 440 440" xmlns="http://www.w3.org/2000/svg" class="cof-svg" aria-label="Circle of Fifths">
-    <!-- outer ring glow -->
-    <circle cx="<%= cx %>" cy="<%= cy %>" r="<%= r_outer + 4 %>" fill="none" stroke="#2d2b55" stroke-width="8"/>
+    <!-- outer ring -->
+    <circle cx="<%= cx %>" cy="<%= cy %>" r="<%= r_outer + 4 %>" fill="none" stroke="#22863a" stroke-width="6"/>
 
     <% fifths.each_with_index do |key, i| %>
       <%
@@ -34,14 +33,14 @@
         mid_angle   = i * deg_per_key
         lx, ly      = label_pos(cx, cy, r_label, mid_angle)
         is_selected = key == selected_key
-        seg_fill    = is_selected ? "#7c3aed" : "#1e1b4b"
-        seg_stroke  = is_selected ? "#a78bfa" : "#312e81"
-        text_fill   = is_selected ? "#ffffff"  : "#a5b4fc"
-        font_weight = is_selected ? "bold"     : "normal"
+        seg_fill    = is_selected ? "#1a3a28" : "#2d2d2d"
+        seg_stroke  = "#22863a"
+        text_fill   = is_selected ? "#4ade80" : "#999999"
+        font_weight = is_selected ? "bold"    : "normal"
         path_d      = arc_path(cx, cy, r_inner, r_outer, start_angle, end_angle)
       %>
       <a href="<%= key_path(key_name: key) %>" class="cof-segment" data-key="<%= key %>">
-        <path d="<%= path_d %>" fill="<%= seg_fill %>" stroke="<%= seg_stroke %>" stroke-width="2"
+        <path d="<%= path_d %>" fill="<%= seg_fill %>" stroke="<%= seg_stroke %>" stroke-width="1.5"
               class="cof-slice<%= " cof-slice--active" if is_selected %>"/>
         <text x="<%= lx.round(1) %>" y="<%= ly.round(1) %>"
               text-anchor="middle" dominant-baseline="central"
@@ -54,12 +53,12 @@
     <% end %>
 
     <!-- inner hub -->
-    <circle cx="<%= cx %>" cy="<%= cy %>" r="<%= r_inner - 4 %>" fill="#0f0e1a"/>
-    <text x="<%= cx %>" y="<%= cy - 10 %>" text-anchor="middle" fill="#6366f1"
-          font-family="'JetBrains Mono', monospace" font-size="13" font-weight="bold">
+    <circle cx="<%= cx %>" cy="<%= cy %>" r="<%= r_inner - 2 %>" fill="#1a1a1a" stroke="#22863a" stroke-width="1"/>
+    <text x="<%= cx %>" y="<%= cy - 10 %>" text-anchor="middle" fill="#4ade80"
+          font-family="'JetBrains Mono', monospace" font-size="14" font-weight="bold">
       <%= selected_key ? selected_key.gsub("#", "♯") : "?" %>
     </text>
-    <text x="<%= cx %>" y="<%= cy + 10 %>" text-anchor="middle" fill="#4338ca"
+    <text x="<%= cx %>" y="<%= cy + 10 %>" text-anchor="middle" fill="#555"
           font-family="Inter, sans-serif" font-size="10">
       <%= selected_key ? "selected" : "pick a key" %>
     </text>
