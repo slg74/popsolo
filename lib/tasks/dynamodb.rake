@@ -60,7 +60,7 @@ module PopsoloTab
     n      = fret_range.length
 
     fret_xs = fret_range.each_with_index.to_h do |fret, idx|
-      [fret, ml + (idx.to_f / (n - 1)) * tab_w]
+      [ fret, ml + (idx.to_f / (n - 1)) * tab_w ]
     end
 
     display_root = root.gsub("#", "♯")
@@ -68,8 +68,8 @@ module PopsoloTab
     notes_str    = notes_text(root, intervals)
 
     svg = +'<svg width="' + svg_w.to_s + '" height="' + svg_h.to_s +
-          '" viewBox="0 0 ' + svg_w.to_s + ' ' + svg_h.to_s +
-          '" xmlns="http://www.w3.org/2000/svg">' + "\n"
+          '" viewBox="0 0 ' + svg_w.to_s + " " + svg_h.to_s +
+          "\" xmlns=\"http://www.w3.org/2000/svg\">\n"
     svg += '<rect width="' + svg_w.to_s + '" height="' + svg_h.to_s + '" fill="#0f0e1a" rx="10"/>' + "\n"
 
     svg += text_tag(svg_w / 2, 22, "middle", "#c4b5fd", 14, "bold", title_str)
