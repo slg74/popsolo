@@ -2,6 +2,9 @@
 
 A Rails 8 app that uses the circle of fifths to find guitar scales for soloing in any key. Scale tab diagrams (guitar tablature) are stored in Amazon DynamoDB.
 
+![Key selector with circle of fifths](popsolo_img1.png)
+![Scale tab diagrams for a selected key](popsolo_img2.png)
+
 ---
 
 ## Stack
