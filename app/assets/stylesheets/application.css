@@ -1,0 +1,228 @@
+/*
+ * PopSolo – dark guitar-themed styles
+ * Propshaft manifest — add @import lines below for additional CSS files.
+ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:         #0a0a14;
+  --bg-card:    #13131f;
+  --bg-card2:   #1a1a2e;
+  --accent:     #7c3aed;
+  --accent-2:   #6366f1;
+  --accent-glow:#a78bfa;
+  --text:       #e2e8f0;
+  --text-muted: #94a3b8;
+  --root-color: #f87171;
+  --note-color: #60a5fa;
+  --border:     #2d2b55;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* ── Header ── */
+.site-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 32px;
+  border-bottom: 1px solid var(--border);
+  background: #0d0d1a;
+}
+.site-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text);
+}
+.logo-icon { font-size: 28px; }
+.logo-text  { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; color: var(--accent-glow); }
+.site-tagline { font-size: 13px; color: var(--text-muted); margin-left: auto; }
+
+main { padding: 32px 24px; max-width: 960px; margin: 0 auto; }
+
+/* ── Flash ── */
+.flash { padding: 10px 16px; border-radius: 8px; margin-bottom: 20px; font-size: 14px; }
+.flash-alert { background: #450a0a; border: 1px solid #991b1b; color: #fca5a5; }
+
+/* ── Index page ── */
+.page-index { display: flex; flex-direction: column; align-items: center; gap: 36px; }
+
+.hero { text-align: center; }
+.hero-title { font-size: 36px; font-weight: 700; letter-spacing: -1px; color: var(--text); }
+.hero-sub   { font-size: 15px; color: var(--text-muted); margin-top: 8px; }
+
+/* ── Circle of Fifths ── */
+.circle-wrap {
+  width: 100%;
+  max-width: 440px;
+}
+.cof-svg {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 24px rgba(99,102,241,0.25));
+}
+.cof-slice {
+  transition: fill 0.18s, filter 0.18s;
+  cursor: pointer;
+}
+.cof-segment:hover .cof-slice {
+  fill: #312e81;
+  filter: brightness(1.25);
+}
+.cof-slice--active { filter: drop-shadow(0 0 8px #a78bfa); }
+.cof-label { pointer-events: none; }
+
+/* ── Key grid (index page) ── */
+.key-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  max-width: 600px;
+}
+.key-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: var(--bg-card2);
+  border: 2px solid var(--border);
+  color: var(--accent-glow);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.18s, border-color 0.18s, transform 0.12s, box-shadow 0.18s;
+}
+.key-btn:hover {
+  background: var(--accent);
+  border-color: var(--accent-glow);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(124,58,237,0.4);
+}
+
+/* ── Show page ── */
+.page-show { display: flex; flex-direction: column; align-items: center; gap: 32px; }
+
+.show-header {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.show-headline h1 {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.key-highlight {
+  color: var(--accent-glow);
+  font-family: 'JetBrains Mono', monospace;
+}
+.show-sub { font-size: 14px; color: var(--text-muted); margin-top: 6px; }
+.legend-root { color: var(--root-color); font-weight: 600; }
+.legend-note { color: var(--note-color); font-weight: 600; }
+
+.btn-back {
+  flex-shrink: 0;
+  padding: 8px 18px;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 14px;
+  text-decoration: none;
+  transition: border-color 0.18s, color 0.18s;
+}
+.btn-back:hover { border-color: var(--accent-glow); color: var(--accent-glow); }
+
+/* ── Scales section ── */
+.scales-section { width: 100%; }
+.scales-heading {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 16px;
+}
+
+.scales-scroll {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 16px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--bg-card);
+}
+.scales-scroll::-webkit-scrollbar { height: 6px; }
+.scales-scroll::-webkit-scrollbar-track { background: var(--bg-card); border-radius: 3px; }
+.scales-scroll::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+.scale-card {
+  flex-shrink: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  transition: border-color 0.18s, box-shadow 0.18s;
+}
+.scale-card:hover {
+  border-color: var(--accent-glow);
+  box-shadow: 0 4px 24px rgba(124,58,237,0.2);
+}
+.scale-card-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent-glow);
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.scale-tab { display: block; }
+.scale-tab svg { display: block; width: 100%; height: auto; }
+.scale-notes {
+  margin-top: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.scales-empty {
+  text-align: center;
+  padding: 48px 24px;
+  border: 1px dashed var(--border);
+  border-radius: 14px;
+  color: var(--text-muted);
+}
+.scales-empty code {
+  background: var(--bg-card2);
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--accent-glow);
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .site-tagline { display: none; }
+  .show-header  { flex-direction: column; }
+  .hero-title   { font-size: 26px; }
+}

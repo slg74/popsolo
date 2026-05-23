@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%= content_for(:title) || "PopSolo – Scale Finder" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header class="site-header">
+      <%= link_to root_path, class: "site-logo" do %>
+        <span class="logo-icon">🎸</span>
+        <span class="logo-text">PopSolo</span>
+      <% end %>
+      <p class="site-tagline">Find your scale. Shred in any key.</p>
+    </header>
+    <main>
+      <% if flash[:alert] %>
+        <div class="flash flash-alert"><%= flash[:alert] %></div>
+      <% end %>
+      <%= yield %>
+    </main>
+  </body>
+</html>

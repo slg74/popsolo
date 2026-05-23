@@ -1,0 +1,18 @@
+<% content_for :title, "PopSolo – Pick a Key" %>
+
+<div class="page-index">
+  <div class="hero">
+    <h1 class="hero-title">Select a Key</h1>
+    <p class="hero-sub">Click any key on the circle of fifths to see scales for soloing.</p>
+  </div>
+
+  <%= render "keys/circle_of_fifths", selected_key: nil %>
+
+  <div class="key-grid">
+    <% @keys.each do |key| %>
+      <%= link_to key_path(key_name: key), class: "key-btn" do %>
+        <%= key.gsub("#", "♯") %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

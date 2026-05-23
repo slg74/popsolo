@@ -1,0 +1,33 @@
+<% content_for :title, "#{@key_name} – Scales for Soloing | PopSolo" %>
+
+<div class="page-show">
+  <div class="show-header">
+    <div class="show-headline">
+      <h1>Soloing in <span class="key-highlight"><%= @key_name.gsub("#", "♯") %></span></h1>
+      <p class="show-sub">Scroll through the scales below. <span class="legend-root">■ Root</span> &nbsp; <span class="legend-note">■ Scale note</span></p>
+    </div>
+    <%= link_to "← All Keys", root_path, class: "btn-back" %>
+  </div>
+
+  <%= render "keys/circle_of_fifths", selected_key: @key_name %>
+
+  <section class="scales-section">
+    <h2 class="scales-heading">Scales for Soloing</h2>
+    <% if @scales.empty? %>
+      <div class="scales-empty">
+        <p>No scale data found for <strong><%= @key_name %></strong>.</p>
+        <p>Run <code>rails dynamodb:seed</code> to populate the database.</p>
+      </div>
+    <% else %>
+      <div class="scales-scroll">
+        <% @scales.each do |scale| %>
+          <div class="scale-card">
+            <h3 class="scale-card-title"><%= scale.display_name %></h3>
+            <div class="scale-tab"><%= scale.svg_data.html_safe %></div>
+            <p class="scale-notes"><%= scale.notes %></p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </section>
+</div>
